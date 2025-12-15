@@ -1,6 +1,3 @@
-/* Advanced Professional Portfolio CSS */
-
-/* CSS Variables for Minimalist Glassmorphism Theme */
 :root {
     --primary-color: #6366f1;
     --secondary-color: #8b5cf6;
@@ -26,7 +23,6 @@
     --backdrop-blur-strong: blur(24px);
 }
 
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -48,7 +44,6 @@ body {
     letter-spacing: -0.01em;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -66,9 +61,6 @@ body {
     background: var(--primary-color);
 }
 
-/* Particle Background removed for a more professional static background */
-
-/* Navigation - Minimalist Glassmorphism */
 .navbar {
     background: var(--bg-glass) !important;
     backdrop-filter: var(--backdrop-blur-strong);
@@ -135,7 +127,7 @@ body {
     width: 60%;
 }
 
-/* Theme Toggle - Minimalist Glassmorphism */
+
 .theme-toggle {
     position: fixed;
     top: 2rem;
@@ -169,7 +161,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Hero Section - Minimalist Glassmorphism */
+
 .hero-section {
     min-height: 100vh;
     position: relative;
@@ -457,7 +449,7 @@ body {
     filter: contrast(1.1) brightness(1.02);
 }
 
-/* Professional Divider - Minimalist */
+
 .professional-divider {
     background: var(--bg-primary);
     padding: 3rem 0;
@@ -540,7 +532,7 @@ body {
     left: 0;
 }
 
-/* About Section - Minimalist */
+
 .about-section {
     background: var(--bg-primary);
     padding: 6rem 0;
@@ -715,7 +707,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* Portfolio Section - Minimalist Glassmorphism */
+
 .portfolio-section {
     background: var(--bg-secondary);
     padding: 6rem 0;
@@ -912,7 +904,7 @@ body {
     margin: 0;
 }
 
-/* Contact Section - Minimalist Glassmorphism */
+
 .contact-section {
     background: var(--bg-primary);
     padding: 6rem 0;
@@ -1035,7 +1027,7 @@ body {
     left: 0;
 }
 
-/* Footer - Minimalist */
+
 .footer {
     background: var(--bg-secondary);
     padding: 2rem 0;
@@ -1058,7 +1050,7 @@ body {
     opacity: 0.6;
 }
 
-/* Responsive Design - Minimalist */
+
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
@@ -1177,7 +1169,7 @@ body {
     }
 }
 
-/* Animation Classes - Minimalist */
+
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -1211,7 +1203,7 @@ body {
     transform: translateX(0);
 }
 
-/* Loading Animation - Minimalist */
+
 .loading {
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
@@ -1228,7 +1220,7 @@ body {
     }
 }
 
-/* Utility Classes - Minimalist Glassmorphism */
+
 .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;

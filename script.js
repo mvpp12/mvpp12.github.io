@@ -1,6 +1,3 @@
-// Advanced Professional Portfolio JavaScript
-
-// Slide content data
 const slideContent = [
     {
         title: 'I\'m an <span class="highlight">IT Student</span>',
@@ -19,7 +16,6 @@ const slideContent = [
 let currentSlide = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all features
     initializeThemeToggle();
     initializeNavigation();
     initializeAnimations();
@@ -33,14 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%cDeveloped by Mark Vincent P. Plaza', 'color: #ff6b6b; font-size: 14px;');
 });
 
-// Particle system removed for a more professional static background
-
-// Theme Toggle
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     
-    // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
@@ -53,7 +45,6 @@ function initializeThemeToggle() {
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
         
-        // Add transition effect
         body.style.transition = 'all 0.3s ease';
         setTimeout(() => {
             body.style.transition = '';
@@ -66,12 +57,10 @@ function updateThemeIcon(theme) {
     icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-// Navigation
 function initializeNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -85,14 +74,12 @@ function initializeNavigation() {
                     behavior: 'smooth'
                 });
                 
-                // Update active link
                 navLinks.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
             }
         });
     });
     
-    // Navbar scroll effect
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
@@ -101,7 +88,6 @@ function initializeNavigation() {
         }
     });
     
-    // Active section highlighting
     const sections = document.querySelectorAll('section[id]');
     
     window.addEventListener('scroll', function() {
@@ -122,7 +108,6 @@ function initializeNavigation() {
     });
 }
 
-// Animations
 function initializeAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -134,7 +119,6 @@ function initializeAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Special handling for skill bars
                 if (entry.target.classList.contains('skill-progress')) {
                     animateSkillBar(entry.target);
                 }
@@ -142,7 +126,6 @@ function initializeAnimations() {
         });
     }, observerOptions);
     
-    // Observe all animated elements
     const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .skill-progress');
     animatedElements.forEach(el => {
         observer.observe(el);
@@ -158,11 +141,7 @@ function animateSkillBar(skillBar) {
     }, 500);
 }
 
-// Scroll Effects
 function initializeScrollEffects() {
-    // Removed hero parallax translate effect for minimal motion
-    
-    // Scroll to top button
     createScrollToTopButton();
 }
 
@@ -191,7 +170,6 @@ function createScrollToTopButton() {
     
     document.body.appendChild(scrollBtn);
     
-    // Show/hide scroll button
     window.addEventListener('scroll', function() {
         if (window.scrollY > 500) {
             scrollBtn.style.opacity = '1';
@@ -202,7 +180,6 @@ function createScrollToTopButton() {
         }
     });
     
-    // Scroll to top functionality
     scrollBtn.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
@@ -210,7 +187,6 @@ function createScrollToTopButton() {
         });
     });
     
-    // Hover effects
     scrollBtn.addEventListener('mouseenter', function() {
         this.style.transform = 'scale(1.1)';
         this.style.boxShadow = '0 12px 40px rgba(0, 212, 255, 0.5)';
@@ -222,9 +198,7 @@ function createScrollToTopButton() {
     });
 }
 
-// Interactive Elements
 function initializeInteractiveElements() {
-    // Portfolio item hover effects
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
@@ -236,7 +210,6 @@ function initializeInteractiveElements() {
         });
     });
     
-    // Social icon animations
     const socialIcons = document.querySelectorAll('.social-icon, .social-link');
     socialIcons.forEach(icon => {
         icon.addEventListener('mouseenter', function() {
@@ -248,7 +221,6 @@ function initializeInteractiveElements() {
         });
     });
     
-    // Button animations
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {
         btn.addEventListener('mouseenter', function() {
@@ -261,7 +233,6 @@ function initializeInteractiveElements() {
     });
 }
 
-// Typing Animation
 function initializeTypingAnimation() {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
@@ -281,18 +252,13 @@ function initializeTypingAnimation() {
     }
 }
 
-// Parallax Effects
 function initializeParallaxEffects() {
-    // Removed mouse parallax tied to particles
 }
 
-// Slide System
 function initializeSlideSystem() {
-    // Initialize with first slide
     updateSlideContent();
     updatePageIndicator();
     
-    // Add keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') {
             previousSlide();
@@ -302,7 +268,6 @@ function initializeSlideSystem() {
     });
 }
 
-// Pagination Functions
 function previousSlide() {
     currentSlide = currentSlide > 0 ? currentSlide - 1 : slideContent.length - 1;
     updateSlideContent();
@@ -339,30 +304,25 @@ function animateSlideTransition() {
     const titleElement = document.getElementById('slide-title');
     const descriptionElement = document.getElementById('slide-description');
     
-    // Fade out
     heroContent.style.opacity = '0';
     heroContent.style.transform = 'translateX(50px)';
     
     setTimeout(() => {
-        // Update content
         if (titleElement && descriptionElement) {
             titleElement.innerHTML = slideContent[currentSlide].title;
             descriptionElement.textContent = slideContent[currentSlide].description;
         }
         
-        // Fade in with new content
         heroContent.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         heroContent.style.opacity = '1';
         heroContent.style.transform = 'translateX(0)';
         
-        // Reset transition after animation
         setTimeout(() => {
             heroContent.style.transition = '';
         }, 500);
     }, 250);
 }
 
-// Performance Optimization
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -375,12 +335,9 @@ function debounce(func, wait) {
     };
 }
 
-// Optimized scroll handler
 const optimizedScrollHandler = debounce(function() {
-    // Scroll-based animations and effects
     const scrolled = window.pageYOffset;
     
-    // Update navbar
     const navbar = document.getElementById('navbar');
     if (scrolled > 100) {
         navbar.classList.add('scrolled');
@@ -388,7 +345,6 @@ const optimizedScrollHandler = debounce(function() {
         navbar.classList.remove('scrolled');
     }
     
-    // Update scroll to top button
     const scrollBtn = document.querySelector('.scroll-to-top');
     if (scrollBtn) {
         if (scrolled > 500) {
@@ -403,11 +359,9 @@ const optimizedScrollHandler = debounce(function() {
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
-// Loading Animation
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
     
-    // Animate hero content
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
         heroContent.style.opacity = '0';
@@ -419,11 +373,8 @@ window.addEventListener('load', function() {
             heroContent.style.transform = 'translateY(0)';
         }, 300);
     }
-    
-    // Particle initialization removed
 });
 
-// Mobile Menu Enhancement
 function initializeMobileMenu() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -438,15 +389,12 @@ function initializeMobileMenu() {
     });
 }
 
-// Initialize mobile menu
 initializeMobileMenu();
 
-// Error Handling
 window.addEventListener('error', function(e) {
     console.error('Portfolio Error:', e.error);
 });
 
-// Console Welcome Message
 console.log('%c🎨 Advanced Portfolio Features:', 'color: #4ecdc4; font-size: 16px; font-weight: bold;');
 console.log('%c• Particle Background System', 'color: #00d4ff; font-size: 14px;');
 console.log('%c• Theme Toggle (Dark/Light)', 'color: #ff6b6b; font-size: 14px;');
