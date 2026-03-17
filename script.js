@@ -26,10 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+
+    const savedTheme = localStorage.getItem('theme');
+    const preferredTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark';
+    const initialTheme = savedTheme || preferredTheme;
+
+    body.setAttribute('data-theme', initialTheme);
+    updateThemeIcon(initialTheme);
 
     if (!themeToggle) {
         return;
@@ -61,6 +66,13 @@ function updateThemeIcon(theme) {
 function initializeNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+
+    const getNavOffset = () => {
+        const height = navbar ? navbar.offsetHeight : 80;
+        return height + 16;
+    };
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -69,11 +81,21 @@ function initializeNavigation() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                const scrollToTarget = () => {
+                    const targetY = targetSection.getBoundingClientRect().top + window.pageYOffset - getNavOffset();
+                    window.scrollTo({
+                        top: targetY,
+                        behavior: 'smooth'
+                    });
+                };
+
+                const isMenuOpen = navbarCollapse && navbarCollapse.classList.contains('show');
+                if (isMenuOpen && navbarToggler) {
+                    navbarToggler.click();
+                    setTimeout(scrollToTarget, 250);
+                } else {
+                    scrollToTarget();
+                }
                 
                 navLinks.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
@@ -87,7 +109,7 @@ function initializeNavigation() {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= (sectionTop - 200)) {
+            if (window.scrollY >= (sectionTop - getNavOffset() - 40)) {
                 current = section.getAttribute('id');
             }
         });
