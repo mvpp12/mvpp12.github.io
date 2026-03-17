@@ -20,13 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeAnimations();
     initializeScrollEffects();
-    initializeInteractiveElements();
-    initializeTypingAnimation();
-    initializeParallaxEffects();
     initializeSlideSystem();
-    
-    console.log('%c🚀 Advanced Portfolio Loaded!', 'color: #00d4ff; font-size: 20px; font-weight: bold;');
-    console.log('%cDeveloped by Mark Vincent P. Plaza', 'color: #ff6b6b; font-size: 14px;');
 });
 
 function initializeThemeToggle() {
@@ -78,14 +72,6 @@ function initializeNavigation() {
                 this.classList.add('active');
             }
         });
-    });
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
     });
     
     const sections = document.querySelectorAll('section[id]');
@@ -147,38 +133,12 @@ function initializeScrollEffects() {
 
 function createScrollToTopButton() {
     const scrollBtn = document.createElement('button');
+    scrollBtn.type = 'button';
     scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     scrollBtn.className = 'scroll-to-top';
-    scrollBtn.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-        color: white;
-        border: none;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
-        font-size: 1.2rem;
-    `;
+    scrollBtn.setAttribute('aria-label', 'Scroll to top');
     
     document.body.appendChild(scrollBtn);
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-            scrollBtn.style.opacity = '1';
-            scrollBtn.style.visibility = 'visible';
-        } else {
-            scrollBtn.style.opacity = '0';
-            scrollBtn.style.visibility = 'hidden';
-        }
-    });
     
     scrollBtn.addEventListener('click', function() {
         window.scrollTo({
@@ -186,73 +146,6 @@ function createScrollToTopButton() {
             behavior: 'smooth'
         });
     });
-    
-    scrollBtn.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.1)';
-        this.style.boxShadow = '0 12px 40px rgba(0, 212, 255, 0.5)';
-    });
-    
-    scrollBtn.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-        this.style.boxShadow = '0 8px 32px rgba(0, 212, 255, 0.3)';
-    });
-}
-
-function initializeInteractiveElements() {
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.03)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    const socialIcons = document.querySelectorAll('.social-icon, .social-link');
-    socialIcons.forEach(icon => {
-        icon.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.1)';
-        });
-        
-        icon.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-}
-
-function initializeTypingAnimation() {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        };
-        
-        setTimeout(typeWriter, 1000);
-    }
-}
-
-function initializeParallaxEffects() {
 }
 
 function initializeSlideSystem() {
@@ -339,21 +232,13 @@ const optimizedScrollHandler = debounce(function() {
     const scrolled = window.pageYOffset;
     
     const navbar = document.getElementById('navbar');
-    if (scrolled > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (navbar) {
+        navbar.classList.toggle('scrolled', scrolled > 100);
     }
-    
+
     const scrollBtn = document.querySelector('.scroll-to-top');
     if (scrollBtn) {
-        if (scrolled > 500) {
-            scrollBtn.style.opacity = '1';
-            scrollBtn.style.visibility = 'visible';
-        } else {
-            scrollBtn.style.opacity = '0';
-            scrollBtn.style.visibility = 'hidden';
-        }
+        scrollBtn.classList.toggle('is-visible', scrolled > 500);
     }
 }, 10);
 
@@ -394,12 +279,3 @@ initializeMobileMenu();
 window.addEventListener('error', function(e) {
     console.error('Portfolio Error:', e.error);
 });
-
-console.log('%c🎨 Advanced Portfolio Features:', 'color: #4ecdc4; font-size: 16px; font-weight: bold;');
-console.log('%c• Particle Background System', 'color: #00d4ff; font-size: 14px;');
-console.log('%c• Theme Toggle (Dark/Light)', 'color: #ff6b6b; font-size: 14px;');
-console.log('%c• Advanced Animations', 'color: #4ecdc4; font-size: 14px;');
-console.log('%c• Parallax Effects', 'color: #00d4ff; font-size: 14px;');
-console.log('%c• Glassmorphism Design', 'color: #ff6b6b; font-size: 14px;');
-console.log('%c• Interactive Elements', 'color: #4ecdc4; font-size: 14px;');
-console.log('%c• Performance Optimized', 'color: #00d4ff; font-size: 14px;');
