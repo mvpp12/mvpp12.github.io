@@ -1205,6 +1205,10 @@ body[data-theme="light"] .btn-outline:hover {
 
 
 @media (max-width: 768px) {
+    .hero-section {
+        padding-top: calc(96px + env(safe-area-inset-top));
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1243,6 +1247,16 @@ body[data-theme="light"] .btn-outline:hover {
     
     .social-icons {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 1rem;
     }
     
     .divider-content {
@@ -1260,15 +1274,16 @@ body[data-theme="light"] .btn-outline:hover {
     }
     
     .theme-toggle {
-        right: 1rem;
-        top: 1rem;
+        right: 0.75rem;
+        top: calc(0.75rem + env(safe-area-inset-top));
         transform: none;
         width: 44px;
         height: 44px;
+        z-index: 1101;
     }
     
     .navbar {
-        padding: 1rem 0;
+        padding: 0.75rem 0;
     }
     
     .nav-link {
@@ -1278,6 +1293,14 @@ body[data-theme="light"] .btn-outline:hover {
 }
 
 @media (max-width: 576px) {
+    .hero-section {
+        padding-top: calc(108px + env(safe-area-inset-top));
+    }
+
+    .navbar-brand {
+        font-size: 1.15rem;
+    }
+
     .hero-title {
         font-size: 2rem;
     }

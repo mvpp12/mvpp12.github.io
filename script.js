@@ -30,6 +30,10 @@ function initializeThemeToggle() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
+
+    if (!themeToggle) {
+        return;
+    }
     
     themeToggle.addEventListener('click', function() {
         const currentTheme = body.getAttribute('data-theme');
@@ -48,6 +52,9 @@ function initializeThemeToggle() {
 
 function updateThemeIcon(theme) {
     const icon = document.querySelector('#theme-toggle i');
+    if (!icon) {
+        return;
+    }
     icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
