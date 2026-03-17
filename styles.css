@@ -1282,18 +1282,9 @@ body[data-theme="light"] .btn-outline:hover {
         font-size: 1rem;
     }
     
+    /* Hide theme toggle on mobile to prevent overlap */
     .theme-toggle {
-        right: 0.75rem;
-        top: calc(0.75rem + env(safe-area-inset-top));
-        transform: none;
-        width: 44px;
-        height: 44px;
-        z-index: 1101;
-    }
-
-    /* Reserve room for the fixed theme toggle so the brand/toggler don't sit under it */
-    .navbar .container {
-        padding-right: calc(1rem + 56px);
+        display: none !important;
     }
     
     .navbar {
@@ -1313,18 +1304,10 @@ body[data-theme="light"] .btn-outline:hover {
 
     .navbar-brand {
         font-size: 1.15rem;
-        max-width: calc(100% - 64px);
+        max-width: calc(100% - 56px);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-    }
-
-    .theme-toggle {
-        right: 0.5rem;
-        top: calc(0.5rem + env(safe-area-inset-top));
-        width: 40px;
-        height: 40px;
-        border-radius: 14px;
     }
 
     .hero-title {
