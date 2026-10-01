@@ -605,15 +605,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .viewfinder__hud {
     position: absolute;
-    top: calc(var(--bracket-inset) + 4px);
-    left: calc(var(--bracket-inset) + 36px);
+    top: calc(var(--bracket-inset) - 2px);
+    left: calc(var(--bracket-inset) + 34px);
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line-strong);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.08em;
-    color: var(--text-2);
+    color: var(--text);
     white-space: nowrap;
 }
 .viewfinder__hud i {
