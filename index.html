@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -62,6 +62,7 @@
 
             <nav class="nav__links" aria-label="Primary">
                 <a href="#work" data-nav>Work</a>
+                <a href="#awards" data-nav>Awards</a>
                 <a href="#about" data-nav>About</a>
                 <a href="#skills" data-nav>Skills</a>
                 <a href="#contact" data-nav>Contact</a>
@@ -84,9 +85,10 @@
     <div class="mobile-menu" id="mobile-menu" hidden>
         <nav aria-label="Mobile">
             <a href="#work"><span>01</span>Work</a>
-            <a href="#about"><span>02</span>About</a>
-            <a href="#skills"><span>03</span>Skills</a>
-            <a href="#contact"><span>04</span>Contact</a>
+            <a href="#awards"><span>02</span>Awards</a>
+            <a href="#about"><span>03</span>About</a>
+            <a href="#skills"><span>04</span>Skills</a>
+            <a href="#contact"><span>05</span>Contact</a>
         </nav>
         <a class="mobile-menu__mail" href="mailto:mvplaza12@gmail.com">mvplaza12@gmail.com</a>
     </div>
@@ -284,8 +286,58 @@
             </div>
         </section>
 
+        <!-- AWARDS -->
+        <section class="section section--alt" id="awards">
+            <div class="container">
+                <header class="section__head reveal">
+                    <p class="eyebrow"><span>02</span> Awards</p>
+                    <h2 class="section__title">Recognition</h2>
+                    <p class="section__sub">Results from competitions where my team and I pitched and built under pressure.</p>
+                </header>
+
+                <article class="award reveal spotlight">
+                    <a class="award__media" href="assets/img/hackathon-team.webp" target="_blank" rel="noopener">
+                        <img src="assets/img/hackathon-team.webp" width="1600" height="1199" loading="lazy"
+                             alt="Team Innobyte on stage holding their certificates, plaque and prize check at PUP Hackathon 2026">
+                    </a>
+                    <div class="award__body">
+                        <span class="award__badge">3rd Runner Up</span>
+                        <h3 class="award__title">PUP Hackathon 2026: Uthak ang Puhunan</h3>
+                        <p class="award__team">Team Innobyte</p>
+                        <p>
+                            Out of the Top 10 finalists, our team placed 3rd Runner Up after pitching our app
+                            to the judges. We took home a plaque, medals and a &#8369;10,000 cash prize.
+                        </p>
+                        <ul class="now award__facts">
+                            <li><span class="now__k">Date</span><span class="now__v">October 13&ndash;14, 2026</span></li>
+                            <li><span class="now__k">Venue</span><span class="now__v">Bulwagang Bonifacio, PUP Mabini Campus, Sta. Mesa, Manila</span></li>
+                            <li><span class="now__k">Organizer</span><span class="now__v">PUP Research Institute for Strategic Foresight and Innovation</span></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <div class="award-shots">
+                    <figure class="award-shot award-shot--paper reveal">
+                        <img src="assets/img/hackathon-cert-3rd.webp" width="900" height="1267" loading="lazy"
+                             alt="Certificate of Recognition naming Mark Vincent P. Plaza 3rd Runner Up of PUP Hackathon 2026">
+                        <figcaption><b>3rd Runner Up</b> Certificate &middot; Oct 14, 2026</figcaption>
+                    </figure>
+                    <figure class="award-shot award-shot--paper reveal">
+                        <img src="assets/img/hackathon-cert-top10.webp" width="900" height="1279" loading="lazy"
+                             alt="Certificate of Recognition naming Mark Vincent P. Plaza one of the Top 10 Finalists of Hackathon 2026">
+                        <figcaption><b>Top 10 Finalist</b> Certificate &middot; Oct 13, 2026</figcaption>
+                    </figure>
+                    <figure class="award-shot award-shot--wide reveal">
+                        <img src="assets/img/hackathon-pitch.webp" width="1400" height="1049" loading="lazy"
+                             alt="Mark presenting the team's app on stage at PUP Hackathon 2026">
+                        <figcaption><b>The pitch</b> Presenting our app</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
         <!-- ABOUT -->
-        <section class="section section--alt" id="about">
+        <section class="section" id="about">
             <div class="container about">
                 <div class="about__media reveal">
                     <figure class="photo">
@@ -296,7 +348,7 @@
 
                 <div class="about__copy">
                     <header class="section__head reveal">
-                        <p class="eyebrow"><span>02</span> About</p>
+                        <p class="eyebrow"><span>03</span> About</p>
                         <h2 class="section__title">Clear, reliable software from idea to release.</h2>
                     </header>
                     <div class="prose reveal">
@@ -335,10 +387,10 @@
         </section>
 
         <!-- SKILLS -->
-        <section class="section" id="skills">
+        <section class="section section--alt" id="skills">
             <div class="container">
                 <header class="section__head reveal">
-                    <p class="eyebrow"><span>03</span> Skills</p>
+                    <p class="eyebrow"><span>04</span> Skills</p>
                     <h2 class="section__title">My toolkit</h2>
                 </header>
 
@@ -366,7 +418,7 @@
         <!-- CONTACT -->
         <section class="section contact" id="contact">
             <div class="container">
-                <p class="eyebrow reveal"><span>04</span> Contact</p>
+                <p class="eyebrow reveal"><span>05</span> Contact</p>
                 <h2 class="contact__title reveal">Have a project or an opportunity in mind? <em>Let's talk.</em></h2>
 
                 <div class="contact__mail reveal">
