@@ -68,7 +68,7 @@
 
     <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -90,6 +90,9 @@
             <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
             <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
             <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+            <symbol id="i-device" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+            <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.300 6.400-3.800 9c-2.500-2.600-3.800-5.600-3.800-9S9.500 5.600 12 3z"/></symbol>
+            <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.500"/><circle cx="6" cy="19" r="2.500"/><circle cx="18" cy="8" r="2.500"/><path d="M6 7.500v9M18 10.500c0 3.500-3 4.500-6 4.500s-6 .500-6 1.500"/></symbol>
             <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5z"/></symbol>
         </defs>
     </svg>
@@ -229,11 +232,11 @@
                 </header>
 
                 <div class="projects">
-                    <article class="project reveal spotlight">
+                    <article class="project project--feature reveal spotlight" id="p-chickdetect">
                         <a class="project__media" href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
                             <img src="assets/img/chickdetect.webp" srcset="assets/img/chickdetect-800.webp 800w, assets/img/chickdetect.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
+                                 sizes="(max-width: 640px) 100vw, 480px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -248,7 +251,7 @@
                         </div>
                     </article>
 
-                    <article class="project reveal spotlight">
+                    <article class="project reveal spotlight" id="p-aurora">
                         <a class="project__media" href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
                             <img src="assets/img/aurora.webp" srcset="assets/img/aurora-800.webp 800w, assets/img/aurora.webp 1200w"
@@ -268,7 +271,7 @@
                         </div>
                     </article>
 
-                    <article class="project reveal spotlight">
+                    <article class="project reveal spotlight" id="p-digimon">
                         <a class="project__media" href="https://mvpp12.github.io/DigimonAPI/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
                             <img src="assets/img/digimon.webp" srcset="assets/img/digimon-800.webp 800w, assets/img/digimon.webp 1200w"
@@ -288,7 +291,7 @@
                         </div>
                     </article>
 
-                    <article class="project reveal spotlight">
+                    <article class="project reveal spotlight" id="p-device">
                         <a class="project__media" href="https://mvpp12.github.io/Device-Specification.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
                             <img src="assets/img/device.webp" srcset="assets/img/device-800.webp 800w, assets/img/device.webp 1200w"
@@ -308,7 +311,7 @@
                         </div>
                     </article>
 
-                    <article class="project reveal spotlight">
+                    <article class="project reveal spotlight" id="p-kimetsu">
                         <a class="project__media" href="https://mvpp12.github.io/Kimetsu-No-Yoiba-Gallery/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
                             <img src="assets/img/kimetsu.webp" srcset="assets/img/kimetsu-800.webp 800w, assets/img/kimetsu.webp 1200w"
@@ -459,24 +462,57 @@
                 <header class="section__head reveal">
                     <p class="eyebrow"><span>04</span> Skills</p>
                     <h2 class="section__title">My toolkit</h2>
+                    <p class="section__sub">The numbers link to the project where I used each skill.</p>
                 </header>
 
                 <div class="skills">
-                    <div class="skill reveal">
-                        <h3>Languages</h3>
-                        <ul><li>Java</li><li>Python</li><li>Dart</li><li>JavaScript</li></ul>
+                    <div class="skill reveal spotlight">
+                        <div class="skill__head">
+                            <span class="skill__icon" aria-hidden="true"><svg class="ic"><use href="#i-code"/></svg></span>
+                            <h3>Languages</h3>
+                        </div>
+                        <ul>
+                            <li><span>Dart</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>JavaScript</span><span class="skill__used"><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
+                            <li><span>Python</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>Java</span></li>
+                        </ul>
                     </div>
-                    <div class="skill reveal">
-                        <h3>Mobile &amp; ML</h3>
-                        <ul><li>Flutter</li><li>TensorFlow Lite</li><li>Android builds</li><li>Image classification</li></ul>
+                    <div class="skill skill--wide reveal spotlight">
+                        <div class="skill__head">
+                            <span class="skill__icon" aria-hidden="true"><svg class="ic"><use href="#i-device"/></svg></span>
+                            <h3>Mobile &amp; ML</h3>
+                        </div>
+                        <ul>
+                            <li><span>Flutter</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>TensorFlow Lite</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>Android builds</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>Image classification</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                        </ul>
                     </div>
-                    <div class="skill reveal">
-                        <h3>Web</h3>
-                        <ul><li>HTML &amp; CSS</li><li>Responsive layout</li><li>Fetch &amp; REST APIs</li><li>GitHub Pages</li></ul>
+                    <div class="skill skill--wide reveal spotlight">
+                        <div class="skill__head">
+                            <span class="skill__icon" aria-hidden="true"><svg class="ic"><use href="#i-globe"/></svg></span>
+                            <h3>Web</h3>
+                        </div>
+                        <ul>
+                            <li><span>HTML &amp; CSS</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 02: Aurora Odyssey"><span>02</span></a><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
+                            <li><span>Responsive layout</span><span class="skill__used"><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a></span></li>
+                            <li><span>Fetch &amp; REST APIs</span><span class="skill__used"><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a></span></li>
+                            <li><span>GitHub Pages</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 02: Aurora Odyssey"><span>02</span></a><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
+                        </ul>
                     </div>
-                    <div class="skill reveal">
-                        <h3>Workflow</h3>
-                        <ul><li>Git &amp; GitHub</li><li>Debugging &amp; testing</li><li>UI/UX iteration</li><li>Research writing</li></ul>
+                    <div class="skill reveal spotlight">
+                        <div class="skill__head">
+                            <span class="skill__icon" aria-hidden="true"><svg class="ic"><use href="#i-branch"/></svg></span>
+                            <h3>Workflow</h3>
+                        </div>
+                        <ul>
+                            <li><span>Git &amp; GitHub</span></li>
+                            <li><span>Debugging &amp; testing</span></li>
+                            <li><span>UI/UX iteration</span></li>
+                            <li><span>Research writing</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
