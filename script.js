@@ -61,6 +61,7 @@
     /* ---------- Nav: background, hide on scroll down, progress ---------- */
 
     var nav = document.getElementById('nav');
+    var progressBar = document.querySelector('.scroll-progress');
     var lastY = window.scrollY;
     var ticking = false;
 
@@ -73,7 +74,8 @@
         nav.classList.toggle('is-hidden', !menuOpen && y > 400 && y > lastY + 4);
         if (y < lastY - 4 || y < 400) nav.classList.remove('is-hidden');
 
-        root.style.setProperty('--progress', max > 0 ? (y / max).toFixed(4) : 0);
+        // Set on the bar itself so a scroll doesn't restyle the whole page
+        if (progressBar) progressBar.style.setProperty('--progress', max > 0 ? (y / max).toFixed(4) : 0);
         lastY = y;
         ticking = false;
     }
@@ -266,6 +268,166 @@
             }
         });
     });
+
+    /* ---------- Award photos: viewer ---------- */
+
+    var lightbox = document.getElementById('lightbox');
+    var zoomLinks = document.querySelectorAll('[data-zoom]');
+
+    if (lightbox && zoomLinks.length && typeof lightbox.showModal === 'function') {
+        var lbImg = lightbox.querySelector('.lightbox__img');
+        var lbText = lightbox.querySelector('.lightbox__text');
+        var lbCount = lightbox.querySelector('.lightbox__count');
+        var lbIndex = 0;
+
+        var showPhoto = function (i) {
+            lbIndex = (i + zoomLinks.length) % zoomLinks.length;
+            var link = zoomLinks[lbIndex];
+            var thumb = link.querySelector('img');
+            var full = link.getAttribute('href');
+            lightbox.classList.remove('is-zoomed');
+            lbImg.alt = thumb ? thumb.alt : '';
+
+            // Show the photo already on the page right away, then swap in the full-size file
+            if (thumb && thumb.currentSrc) {
+                lbImg.src = thumb.currentSrc;
+                var loader = new Image();
+                loader.onload = function () { if (zoomLinks[lbIndex] === link) lbImg.src = full; };
+                loader.src = full;
+            } else {
+                lbImg.src = full;
+            }
+            lbText.textContent = link.getAttribute('data-caption') || '';
+            lbCount.textContent = (lbIndex + 1) + ' / ' + zoomLinks.length;
+        };
+
+        zoomLinks.forEach(function (link, i) {
+            link.addEventListener('click', function (e) {
+                // Leave "open in new tab" clicks alone
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+                e.preventDefault();
+                showPhoto(i);
+                document.body.style.overflow = 'hidden';
+                lightbox.showModal();
+            });
+        });
+
+        lightbox.querySelector('.lightbox__close').addEventListener('click', function () { lightbox.close(); });
+        lightbox.querySelector('.lightbox__prev').addEventListener('click', function () { showPhoto(lbIndex - 1); });
+        lightbox.querySelector('.lightbox__next').addEventListener('click', function () { showPhoto(lbIndex + 1); });
+
+        // Click the photo to switch between fit-to-screen and full size
+        lbImg.addEventListener('click', function () { lightbox.classList.toggle('is-zoomed'); });
+
+        // Click the dark area around the photo to close
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox__figure')) lightbox.close();
+        });
+        lightbox.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') showPhoto(lbIndex - 1);
+            if (e.key === 'ArrowRight') showPhoto(lbIndex + 1);
+        });
+        lightbox.addEventListener('close', function () {
+            document.body.style.overflow = '';
+            lightbox.classList.remove('is-zoomed');
+        });
+    }
+
+    /* ---------- Contact form ---------- */
+
+    var form = document.getElementById('contact-form');
+
+    if (form && window.fetch) {
+        var formStatus = form.querySelector('.contact-form__status');
+        var formBtn = form.querySelector('button[type="submit"]');
+        var formEmail = 'mvplaza12@gmail.com';
+
+        var setStatus = function (text, state) {
+            formStatus.textContent = text;
+            formStatus.className = 'contact-form__status' + (state ? ' is-' + state : '');
+        };
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (form.elements._honey.value) return;
+
+            var payload = {
+                name: form.elements.name.value.trim(),
+                email: form.elements.email.value.trim(),
+                message: form.elements.message.value.trim(),
+                _subject: 'Portfolio message from ' + form.elements.name.value.trim(),
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            formBtn.disabled = true;
+            setStatus('Sending…');
+
+            fetch(form.getAttribute('data-endpoint'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+                .then(function (res) {
+                    return res.json().then(function (body) { return { ok: res.ok, body: body }; });
+                })
+                .then(function (res) {
+                    var failed = !res.ok || String(res.body.success) !== 'true' || /activat/i.test(res.body.message || '');
+                    if (failed) throw new Error('not delivered');
+                    form.reset();
+                    setStatus("Message sent. I'll reply to your email.", 'ok');
+                })
+                .catch(function () {
+                    setStatus('', 'error');
+                    var link = document.createElement('a');
+                    link.href = 'mailto:' + formEmail + '?subject=' + encodeURIComponent('Hello from your portfolio') +
+                        '&body=' + encodeURIComponent(payload.message);
+                    link.textContent = formEmail;
+                    formStatus.appendChild(document.createTextNode('Message not sent. Email me at '));
+                    formStatus.appendChild(link);
+                    formStatus.appendChild(document.createTextNode(' instead.'));
+                })
+                .then(function () { formBtn.disabled = false; });
+        });
+    }
+
+    /* ---------- Live GitHub numbers (refreshed daily by the profile repo's workflow) ---------- */
+
+    var ghStat = document.getElementById('gh-stat');
+
+    if (ghStat && window.fetch) {
+        fetch('https://raw.githubusercontent.com/mvpp12/mvpp12/main/data.json')
+            .then(function (res) { return res.ok ? res.json() : Promise.reject(); })
+            .then(function (d) {
+                if (!d.public_repos) return;
+                ghStat.textContent = d.public_repos + ' repos · ' + d.contributions_year + ' contributions';
+                ghStat.title = 'Public repositories and contributions in the last 12 months, updated ' + d.updated;
+            })
+            .catch(function () {});
+    }
+
+    /* ---------- Visitor analytics (GoatCounter: no cookies, no personal data) ---------- */
+
+    // Put your GoatCounter site code here (the "name" in name.goatcounter.com) to turn counting on.
+    var GOATCOUNTER_CODE = '';
+
+    if (GOATCOUNTER_CODE && location.hostname === 'mvpp12.github.io') {
+        var counter = document.createElement('script');
+        counter.async = true;
+        counter.src = 'https://gc.zgo.at/count.js';
+        counter.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count');
+        document.head.appendChild(counter);
+
+        // Count clicks on project, hero and contact links as events
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('.project__links a, .hero__ctas a, .contact__list a, .more a');
+            if (!link || !window.goatcounter || !window.goatcounter.count) return;
+            var project = link.closest('.project');
+            var name = (project ? project.querySelector('.project__title').textContent + ': ' : '') +
+                link.textContent.replace(/\s+/g, ' ').trim();
+            window.goatcounter.count({ path: 'click/' + name, title: name, event: true });
+        });
+    }
 
     /* ---------- Footer year ---------- */
 

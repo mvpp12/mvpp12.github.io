@@ -13,7 +13,47 @@
     <meta property="og:title" content="Mark Vincent Plaza — IT Student &amp; Developer">
     <meta property="og:description" content="IT student developing cross-platform mobile apps, responsive websites and on-device machine-learning features.">
     <meta property="og:image" content="https://mvpp12.github.io/assets/img/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Mark Vincent Plaza">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mark Vincent Plaza — IT Student &amp; Developer">
+    <meta name="twitter:description" content="IT student developing cross-platform mobile apps, responsive websites and on-device machine-learning features.">
+    <meta name="twitter:image" content="https://mvpp12.github.io/assets/img/og.jpg">
+    <link rel="canonical" href="https://mvpp12.github.io/">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://mvpp12.github.io/#website",
+                "url": "https://mvpp12.github.io/",
+                "name": "Mark Vincent Plaza",
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://mvpp12.github.io/#person",
+                "name": "Mark Vincent P. Plaza",
+                "alternateName": "Mark Vincent Plaza",
+                "url": "https://mvpp12.github.io/",
+                "image": "https://mvpp12.github.io/assets/img/og.jpg",
+                "jobTitle": "IT Student & Developer",
+                "description": "Information Technology student at PUP Sto. Tomas building mobile apps, websites and on-device machine learning tools.",
+                "affiliation": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Polytechnic University of the Philippines – Sto. Tomas Campus"
+                },
+                "address": { "@type": "PostalAddress", "addressCountry": "PH" },
+                "knowsAbout": ["Flutter", "Dart", "TensorFlow Lite", "Java", "Python", "JavaScript", "HTML", "CSS", "REST APIs", "Android"],
+                "award": "3rd Runner Up, PUP Hackathon 2026: Uthak ang Puhunan",
+                "sameAs": ["https://github.com/mvpp12"]
+            }
+        ]
+    }
+    </script>
 
     <script>
         // Set the theme before first paint so there is no flash.
@@ -26,10 +66,9 @@
         })();
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -47,6 +86,11 @@
             <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
             <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
             <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></symbol>
+            <symbol id="i-expand" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+            <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+            <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+            <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+            <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5z"/></symbol>
         </defs>
     </svg>
 
@@ -55,7 +99,7 @@
 
     <header class="nav" id="nav">
         <div class="nav__inner">
-            <a class="brand" href="#top" aria-label="Mark Vincent Plaza, back to top">
+            <a class="brand" href="#top" title="Back to top">
                 <span class="brand__mark">MV</span>
                 <span class="brand__name">Mark Vincent Plaza</span>
             </a>
@@ -136,7 +180,8 @@
                 <figure class="stage" id="stage">
                     <div class="viewfinder">
                         <div class="viewfinder__reveal">
-                            <img src="assets/img/portrait-cutout.webp" width="900" height="979"
+                            <img src="assets/img/portrait-cutout.webp" srcset="assets/img/portrait-cutout-600.webp 600w, assets/img/portrait-cutout.webp 900w"
+                                 sizes="(max-width: 900px) 320px, 460px" width="900" height="979"
                                  alt="Portrait of Mark Vincent Plaza in a dark suit" fetchpriority="high">
                         </div>
                         <span class="viewfinder__scan" aria-hidden="true"></span>
@@ -156,7 +201,7 @@
                 <div><dt>Studying</dt><dd>BS Information Technology</dd></div>
                 <div><dt>School</dt><dd>PUP – Sto. Tomas Campus</dd></div>
                 <div><dt>Focus</dt><dd>Mobile, web &amp; applied ML</dd></div>
-                <div><dt>Projects</dt><dd>5 live &amp; open source</dd></div>
+                <div><dt>GitHub</dt><dd id="gh-stat">11 public repos</dd></div>
             </dl>
         </section>
 
@@ -187,7 +232,8 @@
                     <article class="project reveal spotlight">
                         <a class="project__media" href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/chickdetect.webp" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/chickdetect.webp" srcset="assets/img/chickdetect-800.webp 800w, assets/img/chickdetect.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -205,7 +251,8 @@
                     <article class="project reveal spotlight">
                         <a class="project__media" href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/aurora.webp" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/aurora.webp" srcset="assets/img/aurora-800.webp 800w, assets/img/aurora.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -224,7 +271,8 @@
                     <article class="project reveal spotlight">
                         <a class="project__media" href="https://mvpp12.github.io/DigimonAPI/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/digimon.webp" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/digimon.webp" srcset="assets/img/digimon-800.webp 800w, assets/img/digimon.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -243,7 +291,8 @@
                     <article class="project reveal spotlight">
                         <a class="project__media" href="https://mvpp12.github.io/Device-Specification.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/device.webp" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/device.webp" srcset="assets/img/device-800.webp 800w, assets/img/device.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -262,7 +311,8 @@
                     <article class="project reveal spotlight">
                         <a class="project__media" href="https://mvpp12.github.io/Kimetsu-No-Yoiba-Gallery/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/kimetsu.webp" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/kimetsu.webp" srcset="assets/img/kimetsu-800.webp 800w, assets/img/kimetsu.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
@@ -296,9 +346,12 @@
                 </header>
 
                 <article class="award reveal spotlight">
-                    <a class="award__media" href="assets/img/hackathon-team.webp" target="_blank" rel="noopener">
-                        <img src="assets/img/hackathon-team.webp" width="1600" height="1199" loading="lazy"
+                    <a class="award__media zoom" href="assets/img/hackathon-team-full.webp" target="_blank" rel="noopener"
+                       data-zoom data-caption="Team Innobyte, 3rd Runner Up at PUP Hackathon 2026" aria-label="Enlarge photo: Team Innobyte with their awards">
+                        <img src="assets/img/hackathon-team.webp" srcset="assets/img/hackathon-team-800.webp 800w, assets/img/hackathon-team.webp 1600w"
+                             sizes="(max-width: 900px) 100vw, 640px" width="1600" height="1199" loading="lazy"
                              alt="Team Innobyte on stage holding their certificates, plaque and prize check at PUP Hackathon 2026">
+                        <span class="zoom__hint" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg></span>
                     </a>
                     <div class="award__body">
                         <span class="award__badge">3rd Runner Up</span>
@@ -318,18 +371,31 @@
 
                 <div class="award-shots">
                     <figure class="award-shot award-shot--paper reveal">
-                        <img src="assets/img/hackathon-cert-3rd.webp" width="900" height="1267" loading="lazy"
-                             alt="Certificate of Recognition naming Mark Vincent P. Plaza 3rd Runner Up of PUP Hackathon 2026">
+                        <a class="zoom" href="assets/img/hackathon-cert-3rd-full.webp" target="_blank" rel="noopener"
+                           data-zoom data-caption="3rd Runner Up certificate, October 14, 2026" aria-label="Enlarge the 3rd Runner Up certificate">
+                            <img src="assets/img/hackathon-cert-3rd.webp" width="900" height="1267" loading="lazy"
+                                 alt="Certificate of Recognition naming Mark Vincent P. Plaza 3rd Runner Up of PUP Hackathon 2026">
+                            <span class="zoom__hint" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg></span>
+                        </a>
                         <figcaption><b>3rd Runner Up</b> Certificate &middot; Oct 14, 2026</figcaption>
                     </figure>
                     <figure class="award-shot award-shot--paper reveal">
-                        <img src="assets/img/hackathon-cert-top10.webp" width="900" height="1279" loading="lazy"
-                             alt="Certificate of Recognition naming Mark Vincent P. Plaza one of the Top 10 Finalists of Hackathon 2026">
+                        <a class="zoom" href="assets/img/hackathon-cert-top10-full.webp" target="_blank" rel="noopener"
+                           data-zoom data-caption="Top 10 Finalist certificate, October 13, 2026" aria-label="Enlarge the Top 10 Finalist certificate">
+                            <img src="assets/img/hackathon-cert-top10.webp" width="900" height="1279" loading="lazy"
+                                 alt="Certificate of Recognition naming Mark Vincent P. Plaza one of the Top 10 Finalists of Hackathon 2026">
+                            <span class="zoom__hint" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg></span>
+                        </a>
                         <figcaption><b>Top 10 Finalist</b> Certificate &middot; Oct 13, 2026</figcaption>
                     </figure>
                     <figure class="award-shot award-shot--wide reveal">
-                        <img src="assets/img/hackathon-pitch.webp" width="1400" height="1049" loading="lazy"
-                             alt="Mark presenting the team's app on stage at PUP Hackathon 2026">
+                        <a class="zoom" href="assets/img/hackathon-pitch-full.webp" target="_blank" rel="noopener"
+                           data-zoom data-caption="The pitch: presenting our app" aria-label="Enlarge photo: the pitch">
+                            <img src="assets/img/hackathon-pitch.webp" srcset="assets/img/hackathon-pitch-800.webp 800w, assets/img/hackathon-pitch.webp 1400w"
+                                 sizes="(max-width: 1240px) 100vw, 1130px" width="1400" height="1049" loading="lazy"
+                                 alt="Mark presenting the team's app on stage at PUP Hackathon 2026">
+                            <span class="zoom__hint" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg></span>
+                        </a>
                         <figcaption><b>The pitch</b> Presenting our app</figcaption>
                     </figure>
                 </div>
@@ -341,7 +407,8 @@
             <div class="container about">
                 <div class="about__media reveal">
                     <figure class="photo">
-                        <img src="assets/img/outdoors.webp" width="1400" height="1050" loading="lazy"
+                        <img src="assets/img/outdoors.webp" srcset="assets/img/outdoors-800.webp 800w, assets/img/outdoors.webp 1400w"
+                             sizes="(max-width: 900px) 400px, 520px" width="1400" height="1050" loading="lazy"
                              alt="Mark looking up at the sky from a grassy field, shot from a low angle">
                     </figure>
                 </div>
@@ -421,38 +488,73 @@
                 <p class="eyebrow reveal"><span>05</span> Contact</p>
                 <h2 class="contact__title reveal">Have a project or an opportunity in mind? <em>Let's talk.</em></h2>
 
-                <div class="contact__mail reveal">
-                    <a class="contact__email" href="mailto:mvplaza12@gmail.com">mvplaza12@gmail.com</a>
-                    <button class="btn btn--ghost btn--small copy-btn" type="button" data-copy="mvplaza12@gmail.com">
-                        <svg class="ic ic--copy"><use href="#i-copy"/></svg>
-                        <svg class="ic ic--check"><use href="#i-check"/></svg>
-                        <span class="copy-btn__label" aria-live="polite">Copy email</span>
-                    </button>
-                </div>
+                <div class="contact__grid">
+                    <div class="contact__direct">
+                        <div class="contact__mail reveal">
+                            <a class="contact__email" href="mailto:mvplaza12@gmail.com">mvplaza12@gmail.com</a>
+                            <button class="btn btn--ghost btn--small copy-btn" type="button" data-copy="mvplaza12@gmail.com">
+                                <svg class="ic ic--copy"><use href="#i-copy"/></svg>
+                                <svg class="ic ic--check"><use href="#i-check"/></svg>
+                                <span class="copy-btn__label" aria-live="polite">Copy email</span>
+                            </button>
+                        </div>
 
-                <ul class="contact__list reveal">
-                    <li>
-                        <a href="mailto:mvplaza12@gmail.com">
-                            <svg class="ic"><use href="#i-mail"/></svg>
-                            <span><small>Email</small>Send a message</span>
-                            <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tel:+639094691898">
-                            <svg class="ic"><use href="#i-phone"/></svg>
-                            <span><small>Phone</small>0909 469 1898</span>
-                            <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/mvpp12" target="_blank" rel="noopener">
-                            <svg class="ic"><use href="#i-github"/></svg>
-                            <span><small>GitHub</small>@mvpp12</span>
-                            <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
-                        </a>
-                    </li>
-                </ul>
+                        <ul class="contact__list reveal">
+                            <li>
+                                <a href="mailto:mvplaza12@gmail.com">
+                                    <svg class="ic"><use href="#i-mail"/></svg>
+                                    <span><small>Email</small>Send a message</span>
+                                    <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+639094691898">
+                                    <svg class="ic"><use href="#i-phone"/></svg>
+                                    <span><small>Phone</small>0909 469 1898</span>
+                                    <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/mvpp12" target="_blank" rel="noopener">
+                                    <svg class="ic"><use href="#i-github"/></svg>
+                                    <span><small>GitHub</small>@mvpp12</span>
+                                    <svg class="ic contact__arrow"><use href="#i-arrow-ur"/></svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form class="contact-form reveal" id="contact-form" method="POST"
+                          action="https://formsubmit.co/mvplaza12@gmail.com"
+                          data-endpoint="https://formsubmit.co/ajax/mvplaza12@gmail.com">
+                        <h3 class="contact-form__title">Send me a message</h3>
+                        <div class="field">
+                            <label for="cf-name">Your name</label>
+                            <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="80">
+                        </div>
+                        <div class="field">
+                            <label for="cf-email">Your email</label>
+                            <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="120" spellcheck="false">
+                        </div>
+                        <div class="field">
+                            <label for="cf-message">Message</label>
+                            <textarea id="cf-message" name="message" rows="5" required maxlength="3000"></textarea>
+                        </div>
+                        <div class="field field--trap" aria-hidden="true">
+                            <label for="cf-company">Leave this empty</label>
+                            <input id="cf-company" name="_honey" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+                        <input type="hidden" name="_subject" value="New message from your portfolio">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="contact-form__foot">
+                            <button class="btn btn--accent" type="submit">
+                                <span>Send message</span>
+                                <svg class="ic"><use href="#i-send"/></svg>
+                            </button>
+                            <p class="contact-form__status" role="status" aria-live="polite"></p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -467,6 +569,22 @@
         </div>
     </footer>
 
-    <script src="script.js?v=2"></script>
+    <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+        <figure class="lightbox__figure">
+            <img class="lightbox__img" alt="">
+            <figcaption class="lightbox__cap"><span class="lightbox__text"></span><span class="lightbox__count"></span></figcaption>
+        </figure>
+        <button class="icon-btn lightbox__btn lightbox__close" type="button" aria-label="Close viewer">
+            <svg class="ic"><use href="#i-close"/></svg>
+        </button>
+        <button class="icon-btn lightbox__btn lightbox__prev" type="button" aria-label="Previous photo">
+            <svg class="ic"><use href="#i-chev-l"/></svg>
+        </button>
+        <button class="icon-btn lightbox__btn lightbox__next" type="button" aria-label="Next photo">
+            <svg class="ic"><use href="#i-chev-r"/></svg>
+        </button>
+    </dialog>
+
+    <script src="script.js?v=3"></script>
 </body>
 </html>
