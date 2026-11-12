@@ -833,6 +833,96 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     gap: 1.5rem;
 }
 
+/* ---------- ChickDetect model case study ---------- */
+
+.model {
+    margin-top: 1.5rem;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+}
+.model:target { border-color: var(--accent-text); box-shadow: 0 0 0 4px var(--accent-soft); }
+.model__kicker {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-text);
+}
+.model__title {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+}
+.model__sub { margin-top: 0.6rem; max-width: 62ch; color: var(--text-2); }
+
+.model__steps {
+    counter-reset: step;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem clamp(1.5rem, 1rem + 3vw, 3.5rem);
+}
+.model__steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+}
+.model__steps li::before {
+    content: counter(step, decimal-leading-zero);
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--r-sm);
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+.model__step {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-2);
+    align-self: end;
+}
+.model__steps p { margin-top: 0.2rem; color: var(--text-2); }
+.model__steps b { color: var(--text); font-weight: 600; }
+
+.model__stats { margin-top: 1.75rem; display: grid; grid-template-columns: repeat(2, minmax(0, 16rem)); gap: 1rem; }
+.model__stats div {
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--bg);
+}
+.model__stats b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--accent-text);
+}
+.model__stats span { display: block; margin-top: 0.4rem; font-size: var(--fs-small); color: var(--text-2); }
+
+.model__foot {
+    margin-top: 1.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
+}
+
 /* ---------- Other projects (smaller rows under the main two) ---------- */
 
 .others { margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
@@ -1492,7 +1582,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 1024px) {
     .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .skill, .skill--wide { grid-column: auto; }
-    .skill--wide ul { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .skill--wide { grid-column: 1 / -1; }
+    .skill--wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; }
     .skill.skill--wide li { font-size: 1.15rem; }
 }
 
@@ -1517,12 +1608,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
     .contact__list { grid-template-columns: 1fr; }
     .contact__grid { grid-template-columns: 1fr; }
+    .model__steps { grid-template-columns: 1fr; }
     .other { grid-template-columns: 180px minmax(0, 1fr); }
     .other__links { grid-column: 2; }
 }
 
 @media (max-width: 640px) {
     .projects { grid-template-columns: 1fr; }
+    .skill--wide ul { grid-template-columns: 1fr; }
+    .model__stats { grid-template-columns: 1fr 1fr; }
     .other { grid-template-columns: 1fr; gap: 1rem; padding: 0.75rem 0.75rem 1rem; }
     .other__body, .other__links { padding-inline: 0.75rem; }
     .award-shots { grid-template-columns: 1fr; }
