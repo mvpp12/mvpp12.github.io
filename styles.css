@@ -829,9 +829,48 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .projects {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
 }
+
+/* ---------- Other projects (smaller rows under the main two) ---------- */
+
+.others { margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+.others__title {
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-2);
+}
+.other {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    transition: border-color 0.3s;
+}
+.other:hover { border-color: var(--line-strong); }
+.other:target { border-color: var(--accent-text); box-shadow: 0 0 0 4px var(--accent-soft); }
+.other__media { display: block; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--line); }
+.other__media img { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; object-position: top; filter: brightness(var(--img-dim)); }
+.other__body { position: relative; z-index: 3; }
+.other .project__top { justify-content: flex-start; }
+.other__name {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.other__body p { margin-top: 0.3rem; color: var(--text-2); }
+.other__links { position: relative; z-index: 3; margin-top: 0; padding-top: 0; }
 
 .project {
     display: flex;
@@ -857,6 +896,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     }
     .project--feature .project__media img { flex: 1 1 0; height: 0; min-height: 240px; aspect-ratio: auto; }
     .project--feature .project__body { flex: 1 1 0; padding: clamp(1.5rem, 1rem + 1.5vw, 2.25rem); }
+    /* Second big card mirrors the first: photo on the right */
+    .project--flip { flex-direction: row-reverse; }
+    .project--flip .project__media { margin: 0.75rem 0.75rem 0.75rem 0; }
     .project--feature .project__title { font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem); line-height: 1.08; }
     .project--feature .project__body p { margin-top: 0.9rem; font-size: 1.05rem; }
 }
@@ -916,6 +958,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     line-height: 1.15;
 }
 .project__body p { margin-top: 0.6rem; color: var(--text-2); font-size: 1rem; }
+.project__body .project__role { margin-top: 1rem; font-size: 0.95rem; color: var(--text); }
+.project__role span {
+    margin-right: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+}
 .project__links {
     margin-top: auto;
     padding-top: 0.9rem;
@@ -1439,7 +1490,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1024px) {
-    .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .skill, .skill--wide { grid-column: auto; }
     .skill--wide ul { grid-template-columns: 1fr; grid-auto-rows: auto; }
@@ -1467,10 +1517,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
     .contact__list { grid-template-columns: 1fr; }
     .contact__grid { grid-template-columns: 1fr; }
+    .other { grid-template-columns: 180px minmax(0, 1fr); }
+    .other__links { grid-column: 2; }
 }
 
 @media (max-width: 640px) {
     .projects { grid-template-columns: 1fr; }
+    .other { grid-template-columns: 1fr; gap: 1rem; padding: 0.75rem 0.75rem 1rem; }
+    .other__body, .other__links { padding-inline: 0.75rem; }
     .award-shots { grid-template-columns: 1fr; }
     .skills { grid-template-columns: 1fr; }
     .hero__facts { grid-template-columns: 1fr 1fr; }

@@ -68,7 +68,7 @@
 
     <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -227,20 +227,42 @@
             <div class="container">
                 <header class="section__head reveal">
                     <p class="eyebrow"><span>01</span> Selected work</p>
-                    <h2 class="section__title">Things I've built</h2>
-                    <p class="section__sub">A selection of mobile, web and machine-learning projects. Every one is live or open source.</p>
+                    <h2 class="section__title">Things I've worked on</h2>
+                    <p class="section__sub">Two main projects, a hackathon team app and a mobile ML app, plus smaller web builds. Every one is live or open source.</p>
                 </header>
 
                 <div class="projects">
-                    <article class="project project--feature reveal spotlight" id="p-chickdetect">
-                        <a class="project__media" href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                    <article class="project project--feature reveal spotlight" id="p-konektado">
+                        <a class="project__media" href="https://www.konektado.app/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/chickdetect.webp" srcset="assets/img/chickdetect-800.webp 800w, assets/img/chickdetect.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, 480px" width="1200" height="750" loading="lazy" alt="">
+                            <img src="assets/img/konektado.webp" srcset="assets/img/konektado-800.webp 800w, assets/img/konektado.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, 640px" width="1200" height="750" loading="lazy" alt="">
                         </a>
                         <div class="project__body">
                             <div class="project__top">
                                 <span class="project__num">01</span>
+                                <ul class="tags tags--quiet"><li>Hackathon</li><li>Team of 5</li></ul>
+                            </div>
+                            <h3 class="project__title">Konektado</h3>
+                            <p>A community marketplace for skills. People describe what they need in their own words, compare local
+                               providers, review a clear quote and book, all in one app. It placed 3rd Runner Up at PUP Hackathon 2026.</p>
+                            <p class="project__role"><span>My role</span> Chief Marketing Officer, Team INNOBYTE</p>
+                            <div class="project__links">
+                                <a href="https://www.konektado.app/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+                                <a href="#awards">The award <svg class="ic"><use href="#i-arrow-r"/></svg></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project project--feature project--flip reveal spotlight" id="p-chickdetect">
+                        <a class="project__media" href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                            <span class="browser-bar"><i></i><i></i><i></i></span>
+                            <img src="assets/img/chickdetect.webp" srcset="assets/img/chickdetect-800.webp 800w, assets/img/chickdetect.webp 1200w"
+                                 sizes="(max-width: 640px) 100vw, 640px" width="1200" height="750" loading="lazy" alt="">
+                        </a>
+                        <div class="project__body">
+                            <div class="project__top">
+                                <span class="project__num">02</span>
                                 <ul class="tags tags--quiet"><li>Flutter</li><li>TensorFlow Lite</li></ul>
                             </div>
                             <h3 class="project__title">ChickDetect</h3>
@@ -251,83 +273,25 @@
                         </div>
                     </article>
 
-                    <article class="project reveal spotlight" id="p-aurora">
-                        <a class="project__media" href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-                            <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/aurora.webp" srcset="assets/img/aurora-800.webp 800w, assets/img/aurora.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
-                        </a>
-                        <div class="project__body">
-                            <div class="project__top">
-                                <span class="project__num">02</span>
-                                <ul class="tags tags--quiet"><li>HTML</li><li>CSS</li></ul>
-                            </div>
-                            <h3 class="project__title">Aurora Odyssey</h3>
-                            <p>An interactive guide to the Northern Lights: how auroras form, key facts, a photo gallery and the best places on Earth to see them.</p>
-                            <div class="project__links">
-                                <a href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
-                                <a href="https://github.com/mvpp12/Northern-Lights.github.io" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
-                            </div>
-                        </div>
-                    </article>
+                </div>
 
-                    <article class="project reveal spotlight" id="p-digimon">
-                        <a class="project__media" href="https://mvpp12.github.io/DigimonAPI/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-                            <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/digimon.webp" srcset="assets/img/digimon-800.webp 800w, assets/img/digimon.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
+                <div class="others">
+                    <h3 class="others__title reveal">Other projects</h3>
+                    <article class="other reveal spotlight" id="p-aurora">
+                        <a class="other__media" href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                            <img src="assets/img/aurora-800.webp" width="800" height="500" loading="lazy" alt="">
                         </a>
-                        <div class="project__body">
+                        <div class="other__body">
                             <div class="project__top">
                                 <span class="project__num">03</span>
-                                <ul class="tags tags--quiet"><li>JavaScript</li><li>REST API</li></ul>
+                                <ul class="tags tags--quiet"><li>HTML</li><li>CSS</li></ul>
                             </div>
-                            <h3 class="project__title">Digimon API Explorer</h3>
-                            <p>Browse and search Digimon by name. Character data and artwork load live from the public Digi-API using plain JavaScript.</p>
-                            <div class="project__links">
-                                <a href="https://mvpp12.github.io/DigimonAPI/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
-                                <a href="https://github.com/mvpp12/DigimonAPI" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
-                            </div>
+                            <h4 class="other__name">Aurora Odyssey</h4>
+                            <p>An interactive guide to the Northern Lights: how auroras form, key facts, a photo gallery and the best places on Earth to see them.</p>
                         </div>
-                    </article>
-
-                    <article class="project reveal spotlight" id="p-device">
-                        <a class="project__media" href="https://mvpp12.github.io/Device-Specification.github.io/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-                            <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/device.webp" srcset="assets/img/device-800.webp 800w, assets/img/device.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
-                        </a>
-                        <div class="project__body">
-                            <div class="project__top">
-                                <span class="project__num">04</span>
-                                <ul class="tags tags--quiet"><li>HTML</li><li>Responsive</li></ul>
-                            </div>
-                            <h3 class="project__title">Device Specification</h3>
-                            <p>A product page for the MacBook Air M4 that lays out the chip, memory, display and battery details as a clean, scannable spec sheet.</p>
-                            <div class="project__links">
-                                <a href="https://mvpp12.github.io/Device-Specification.github.io/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
-                                <a href="https://github.com/mvpp12/Device-Specification.github.io" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project reveal spotlight" id="p-kimetsu">
-                        <a class="project__media" href="https://mvpp12.github.io/Kimetsu-No-Yoiba-Gallery/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-                            <span class="browser-bar"><i></i><i></i><i></i></span>
-                            <img src="assets/img/kimetsu.webp" srcset="assets/img/kimetsu-800.webp 800w, assets/img/kimetsu.webp 1200w"
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" width="1200" height="750" loading="lazy" alt="">
-                        </a>
-                        <div class="project__body">
-                            <div class="project__top">
-                                <span class="project__num">05</span>
-                                <ul class="tags tags--quiet"><li>JavaScript</li><li>CSS</li></ul>
-                            </div>
-                            <h3 class="project__title">Kimetsu no Yaiba Gallery</h3>
-                            <p>A fan gallery for Demon Slayer with character profiles, episode stills and fan art, set in a dark, cinematic layout.</p>
-                            <div class="project__links">
-                                <a href="https://mvpp12.github.io/Kimetsu-No-Yoiba-Gallery/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
-                                <a href="https://github.com/mvpp12/Kimetsu-No-Yoiba-Gallery" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
-                            </div>
+                        <div class="project__links other__links">
+                            <a href="https://mvpp12.github.io/Northern-Lights.github.io/" target="_blank" rel="noopener">Live site <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+                            <a href="https://github.com/mvpp12/Northern-Lights.github.io" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
                         </div>
                     </article>
                 </div>
@@ -361,8 +325,9 @@
                         <h3 class="award__title">PUP Hackathon 2026: Uthak ang Puhunan</h3>
                         <p class="award__team">Team Innobyte</p>
                         <p>
-                            Out of the Top 10 finalists, our team placed 3rd Runner Up after pitching our app
-                            to the judges. We took home a plaque, medals and a &#8369;10,000 cash prize.
+                            Out of the Top 10 finalists, our team placed 3rd Runner Up after pitching
+                            <a class="inline-link" href="https://www.konektado.app/" target="_blank" rel="noopener">Konektado</a>,
+                            our community skills marketplace app, to the judges. We took home a plaque, medals and a &#8369;10,000 cash prize.
                         </p>
                         <ul class="now award__facts">
                             <li><span class="now__k">Date</span><span class="now__v">October 13&ndash;14, 2026</span></li>
@@ -472,9 +437,9 @@
                             <h3>Languages</h3>
                         </div>
                         <ul>
-                            <li><span>Dart</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
-                            <li><span>JavaScript</span><span class="skill__used"><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
-                            <li><span>Python</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>Dart</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
+                            <li><span>JavaScript</span></li>
+                            <li><span>Python</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
                             <li><span>Java</span></li>
                         </ul>
                     </div>
@@ -484,10 +449,10 @@
                             <h3>Mobile &amp; ML</h3>
                         </div>
                         <ul>
-                            <li><span>Flutter</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
-                            <li><span>TensorFlow Lite</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
-                            <li><span>Android builds</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
-                            <li><span>Image classification</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 01: ChickDetect"><span>01</span></a></span></li>
+                            <li><span>Flutter</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
+                            <li><span>TensorFlow Lite</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
+                            <li><span>Android builds</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
+                            <li><span>Image classification</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
                         </ul>
                     </div>
                     <div class="skill skill--wide reveal spotlight">
@@ -496,10 +461,10 @@
                             <h3>Web</h3>
                         </div>
                         <ul>
-                            <li><span>HTML &amp; CSS</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 02: Aurora Odyssey"><span>02</span></a><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
-                            <li><span>Responsive layout</span><span class="skill__used"><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a></span></li>
-                            <li><span>Fetch &amp; REST APIs</span><span class="skill__used"><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a></span></li>
-                            <li><span>GitHub Pages</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 02: Aurora Odyssey"><span>02</span></a><a href="#p-digimon" title="Digimon API Explorer" aria-label="Project 03: Digimon API Explorer"><span>03</span></a><a href="#p-device" title="Device Specification" aria-label="Project 04: Device Specification"><span>04</span></a><a href="#p-kimetsu" title="Kimetsu no Yaiba Gallery" aria-label="Project 05: Kimetsu no Yaiba Gallery"><span>05</span></a></span></li>
+                            <li><span>HTML &amp; CSS</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 03: Aurora Odyssey"><span>03</span></a></span></li>
+                            <li><span>Responsive layout</span></li>
+                            <li><span>Fetch &amp; REST APIs</span></li>
+                            <li><span>GitHub Pages</span><span class="skill__used"><a href="#p-aurora" title="Aurora Odyssey" aria-label="Project 03: Aurora Odyssey"><span>03</span></a></span></li>
                         </ul>
                     </div>
                     <div class="skill reveal spotlight">
@@ -511,6 +476,7 @@
                             <li><span>Git &amp; GitHub</span></li>
                             <li><span>Debugging &amp; testing</span></li>
                             <li><span>UI/UX iteration</span></li>
+                            <li><span>Pitching &amp; marketing</span><span class="skill__used"><a href="#p-konektado" title="Konektado" aria-label="Project 01: Konektado"><span>01</span></a></span></li>
                             <li><span>Research writing</span></li>
                         </ul>
                     </div>
