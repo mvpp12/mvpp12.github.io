@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChickDetect case study — Mark Vincent Plaza</title>
+    <meta name="description" content="How Mark Vincent Plaza trained ChickDetect's on-device image classifier: 10,467 photos, MobileNetV2 transfer learning, a 10 MB TensorFlow Lite model and 96.6% test accuracy.">
+    <meta name="theme-color" content="#0c0e0c">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mvpp12.github.io/chickdetect.html">
+    <meta property="og:title" content="ChickDetect case study — Mark Vincent Plaza">
+    <meta property="og:description" content="An on-device image classifier for poultry health: MobileNetV2 transfer learning, a 10 MB TFLite model and 96.6% test accuracy.">
+    <meta property="og:image" content="https://mvpp12.github.io/assets/img/chickdetect.webp">
+    <meta property="og:site_name" content="Mark Vincent Plaza">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://mvpp12.github.io/chickdetect.html">
+
+    <script>
+        // Set the theme before first paint so there is no flash.
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=12">
+</head>
+<body>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+            <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+            <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+            <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+            <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+            <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
+            <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></symbol>
+            <symbol id="i-expand" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+            <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+            <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+            <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+            <symbol id="i-device" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+            <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.300 6.400-3.800 9c-2.500-2.600-3.800-5.600-3.800-9S9.500 5.600 12 3z"/></symbol>
+            <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.500"/><circle cx="6" cy="19" r="2.500"/><circle cx="18" cy="8" r="2.500"/><path d="M6 7.500v9M18 10.500c0 3.500-3 4.500-6 4.500s-6 .500-6 1.500"/></symbol>
+            <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M6.3 17.7l2.8-2.8M14.9 9.1l2.8-2.8"/><circle cx="12" cy="12" r="2"/></symbol>
+            <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5z"/></symbol>
+        </defs>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a class="brand" href="index.html" title="Back to the portfolio">
+                <span class="brand__mark">MV</span>
+                <span class="brand__name">Mark Vincent Plaza</span>
+            </a>
+
+            <nav class="nav__links" aria-label="Primary">
+                <a href="index.html#work" class="is-active" aria-current="true">Work</a>
+                <a href="index.html#awards">Awards</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                    <svg class="ic ic--sun"><use href="#i-sun"/></svg>
+                    <svg class="ic ic--moon"><use href="#i-moon"/></svg>
+                </button>
+                <a class="btn btn--small btn--accent nav__cta" href="index.html#contact">Let's talk</a>
+                <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="menu-btn__bar"></span>
+                    <span class="menu-btn__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+        <nav aria-label="Mobile">
+            <a href="index.html#work"><span>01</span>Work</a>
+            <a href="index.html#awards"><span>02</span>Awards</a>
+            <a href="index.html#about"><span>03</span>About</a>
+            <a href="index.html#skills"><span>04</span>Skills</a>
+            <a href="index.html#contact"><span>05</span>Contact</a>
+        </nav>
+        <a class="mobile-menu__mail" href="mailto:mvplaza12@gmail.com">mvplaza12@gmail.com</a>
+    </div>
+
+    <main id="main">
+        <section class="section case">
+            <div class="container">
+                <a class="case__back" href="index.html#p-chickdetect">
+                    <svg class="ic"><use href="#i-chev-l"/></svg>
+                    All work
+                </a>
+
+                <div class="case__intro">
+                    <div class="case__copy">
+                        <p class="eyebrow">Case study</p>
+                        <h1 class="case__title">ChickDetect</h1>
+                        <p class="case__lead">An Android app that classifies photos of poultry droppings as healthy or showing signs of
+                            coccidiosis, Salmonella or Newcastle disease. I trained the image model behind it, and it runs offline on the phone.</p>
+                        <ul class="tags"><li>Flutter</li><li>TensorFlow Lite</li><li>MobileNetV2</li><li>Python</li></ul>
+                        <div class="project__links">
+                            <a href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener">App code <svg class="ic"><use href="#i-code"/></svg></a>
+                        </div>
+                    </div>
+                    <figure class="case__media">
+                        <span class="browser-bar"><i></i><i></i><i></i></span>
+                        <img src="assets/img/chickdetect.webp" srcset="assets/img/chickdetect-800.webp 800w, assets/img/chickdetect.webp 1200w"
+                             sizes="(max-width: 900px) 100vw, 560px" width="1200" height="750" fetchpriority="high"
+                             alt="A hand holding a phone running ChickDetect over a chicken dropping, with a chicken in the background">
+                    </figure>
+                </div>
+
+            <article class="model reveal" id="model" aria-labelledby="model-title">
+                <header class="model__head">
+                    <h3 class="model__title" id="model-title">How the model works</h3>
+                    <p class="model__sub">The image classifier behind ChickDetect: how I trained it and how it performs on photos it never saw.</p>
+                </header>
+
+                <div class="model__stats">
+                    <div><b>96.6%</b><span>Test accuracy, all 5 classes</span></div>
+                    <div><b>95.5%</b><span>On the 4 dropping classes</span></div>
+                </div>
+
+                <ol class="model__steps">
+                    <li>
+                        <span class="model__step">Data</span>
+                        <p><b>10,467 photos in 5 classes</b>: four kinds of dropping plus &ldquo;not a dropping&rdquo;, so the app can say when a photo is something else. Split 70 / 15 / 15, with copies of the same photo kept in the same split so the test score isn't inflated.</p>
+                    </li>
+                    <li>
+                        <span class="model__step">Model</span>
+                        <p><b>Transfer learning on MobileNetV2</b>, pretrained on ImageNet and used as a frozen feature extractor. I trained a small classification head with dropout, class weights and augmented images (flips, rotations, darker exposures).</p>
+                    </li>
+                    <li>
+                        <span class="model__step">Ship</span>
+                        <p><b>One 10&nbsp;MB TensorFlow Lite file</b> that takes a raw photo and returns five probabilities. Pixel scaling lives inside the model, so the app and the model can't disagree. It runs offline on the phone.</p>
+                    </li>
+                    <li>
+                        <span class="model__step">Test</span>
+                        <p><b>Scored as the exported file</b>, the same one the app runs, on 1,572 held-out test photos.</p>
+                    </li>
+                </ol>
+
+                <div class="model__foot">
+                    <div class="project__links">
+                        <a href="https://github.com/mvpp12/ChickDetect/blob/main/training/train_model.py" target="_blank" rel="noopener">Training script <svg class="ic"><use href="#i-code"/></svg></a>
+                        <a href="https://github.com/mvpp12/ChickDetect/blob/main/training/report.txt" target="_blank" rel="noopener">Full test report <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+                    </div>
+                </div>
+            </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© <span id="year">2026</span> Mark Vincent P. Plaza</p>
+            <a class="footer__top" href="#main">
+                Back to top
+                <svg class="ic"><use href="#i-arrow-up"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js?v=3"></script>
+</body>
+</html>

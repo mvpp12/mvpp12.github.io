@@ -68,7 +68,7 @@
 
     <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 
@@ -267,54 +267,19 @@
                                 <ul class="tags tags--quiet"><li>Flutter</li><li>TensorFlow Lite</li></ul>
                             </div>
                             <h3 class="project__title">ChickDetect</h3>
-                            <p>An Android app that classifies photos of poultry droppings as healthy or showing signs of coccidiosis, Salmonella or Newcastle disease. I trained the image model myself; it runs offline on the phone and scores 96.6% on held-out test images.</p>
+                            <p>An Android app that classifies photos of poultry droppings as healthy or showing signs of coccidiosis, Salmonella or Newcastle disease. I trained its image model myself, and it runs offline on the phone.</p>
+                            <ul class="project__stats">
+                                <li><b>96.6%</b><span>Test accuracy</span></li>
+                                <li><b>10,467</b><span>Labelled photos</span></li>
+                                <li><b>10&nbsp;MB</b><span>On-device model</span></li>
+                            </ul>
                             <div class="project__links">
-                                <a href="#model">How the model works <svg class="ic"><use href="#i-arrow-r"/></svg></a>
+                                <a href="chickdetect.html">How the model works <svg class="ic"><use href="#i-arrow-r"/></svg></a>
                                 <a href="https://github.com/mvpp12/ChickDetect" target="_blank" rel="noopener">Code <svg class="ic"><use href="#i-code"/></svg></a>
                             </div>
                         </div>
                     </article>
-
                 </div>
-
-                <article class="model reveal" id="model" aria-labelledby="model-title">
-                    <header class="model__head">
-                        <p class="model__kicker">Inside ChickDetect</p>
-                        <h3 class="model__title" id="model-title">How the model works</h3>
-                        <p class="model__sub">The image classifier behind ChickDetect: how I trained it and how it performs on photos it never saw.</p>
-                    </header>
-
-                    <div class="model__stats">
-                        <div><b>96.6%</b><span>Test accuracy, all 5 classes</span></div>
-                        <div><b>95.5%</b><span>On the 4 dropping classes</span></div>
-                    </div>
-
-                    <ol class="model__steps">
-                        <li>
-                            <span class="model__step">Data</span>
-                            <p><b>10,467 photos in 5 classes</b>: four kinds of dropping plus &ldquo;not a dropping&rdquo;, so the app can say when a photo is something else. Split 70 / 15 / 15, with copies of the same photo kept in the same split so the test score isn't inflated.</p>
-                        </li>
-                        <li>
-                            <span class="model__step">Model</span>
-                            <p><b>Transfer learning on MobileNetV2</b>, pretrained on ImageNet and used as a frozen feature extractor. I trained a small classification head with dropout, class weights and augmented images (flips, rotations, darker exposures).</p>
-                        </li>
-                        <li>
-                            <span class="model__step">Ship</span>
-                            <p><b>One 10&nbsp;MB TensorFlow Lite file</b> that takes a raw photo and returns five probabilities. Pixel scaling lives inside the model, so the app and the model can't disagree. It runs offline on the phone.</p>
-                        </li>
-                        <li>
-                            <span class="model__step">Test</span>
-                            <p><b>Scored as the exported file</b>, the same one the app runs, on 1,572 held-out test photos.</p>
-                        </li>
-                    </ol>
-
-                    <div class="model__foot">
-                        <div class="project__links">
-                            <a href="https://github.com/mvpp12/ChickDetect/blob/main/training/train_model.py" target="_blank" rel="noopener">Training script <svg class="ic"><use href="#i-code"/></svg></a>
-                            <a href="https://github.com/mvpp12/ChickDetect/blob/main/training/report.txt" target="_blank" rel="noopener">Full test report <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
-                        </div>
-                    </div>
-                </article>
 
                 <div class="others">
                     <h3 class="others__title reveal">Other projects</h3>
@@ -478,12 +443,12 @@
                             <h3>Machine learning</h3>
                         </div>
                         <ul>
-                            <li><span>TensorFlow &amp; Keras</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
-                            <li><span>Transfer learning</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
-                            <li><span>Data augmentation</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
-                            <li><span>Model evaluation</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
-                            <li><span>TFLite conversion</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
-                            <li><span>Image classification</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
+                            <li><span>TensorFlow &amp; Keras</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
+                            <li><span>Transfer learning</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
+                            <li><span>Data augmentation</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
+                            <li><span>Model evaluation</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
+                            <li><span>TFLite conversion</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
+                            <li><span>Image classification</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
                         </ul>
                     </div>
                     <div class="skill reveal spotlight">
@@ -492,7 +457,7 @@
                             <h3>Languages</h3>
                         </div>
                         <ul>
-                            <li><span>Python</span><span class="skill__used"><a href="#model" title="ChickDetect model" aria-label="ChickDetect model details"><span>02</span></a></span></li>
+                            <li><span>Python</span><span class="skill__used"><a href="chickdetect.html#model" title="ChickDetect model" aria-label="ChickDetect model case study"><span>02</span></a></span></li>
                             <li><span>Dart</span><span class="skill__used"><a href="#p-chickdetect" title="ChickDetect" aria-label="Project 02: ChickDetect"><span>02</span></a></span></li>
                             <li><span>JavaScript</span></li>
                             <li><span>Java</span></li>
